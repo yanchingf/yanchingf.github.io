@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sophie's Blog</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: rgb(233, 230, 229);
+        --text: rgb(77, 72, 67);
+      }
+      [data-theme="dark"] {
+        --bg: rgb(40, 37, 34);
+        --text: rgb(233, 230, 229);
+      }
+      body {
+        padding: 20px;
+        line-height: 1.5;
+        transition: background-color 0.2s, color 0.2s;
+        font-size: 30px;
+        font-family: 'Cabinet Grotesk', sans-serif;
+        background-color: var(--bg);
+        max-width: 680px;
+        color: var(--text);
+        margin: 0 auto;
+      }
+      nav {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: flex-end;
+        margin-bottom: 2rem;
+      }
+      nav a, nav button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text);
+        padding: 0;
+      }
+      nav a:hover, nav button:hover { opacity: 0.6;}
+    </style>
+  </head>
+  <body>
+    <nav>
+      <button id="theme-toggle" title="Toggle theme">
+        <i data-lucide="sun"></i>
+      </button>
+      <a href="https://github.com/yanchingf/" title="git">
+        <i data-lucide="git-fork"></i>
+      </a>
+    </nav>
+
+    <h1>🛋️ Sophie's Blog</h1>
+    <p>compe + physics @ northwestern</p>
+
+    <script>
+      lucide.createIcons();
+      const body = document.body;
+      if (localStorage.getItem('theme') === 'dark') body.dataset.theme = 'dark';
+
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const isDark = body.dataset.theme === 'dark';
+        body.dataset.theme = isDark ? 'light' : 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        document.getElementById('theme-toggle').innerHTML = `<i data-lucide="${isDark ? 'sun' : 'moon'}"></i>`;
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>
