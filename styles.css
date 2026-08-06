@@ -1,7 +1,28 @@
 
-main {
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  padding: 2rem;
   display: flex;
-  height: calc(100vh - 4rem);
+  flex-direction: column;
+  overflow: hidden;
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Cabinet Grotesk", sans-serif;
+  transition: background-color .2s ease, color .2s ease;
+  box-sizing: border-box;
+}
+
+main {
+  flex: 1;
+  min-height: 0; 
+  display: grid;
+  grid-template-columns: 1fr 420px;
   gap: 4rem;
 }
 
@@ -20,30 +41,33 @@ main {
 }
 
 .content {
-  flex: 0 0 420px;
-  display: flex;
-  align-items: flex-end;
+  align-self: end;
   padding-bottom: 2rem;
+  max-height: 100%;
+  overflow: visible; 
 }
 
 .name-block {
   position: relative;
+  width: max-content; 
 }
 
 .horse {
   position: absolute;
-
   left: 7rem;
   bottom: -2rem;
-
+  max-width: 100%;
+  overflow: hidden; 
   margin: 0;
-
   font-family: monospace;
-  font-size: .45rem;
+  font-size: 0.45rem;
   line-height: 1;
-
   white-space: pre;
-
-  opacity: .8;
+  opacity: 0.8;
   z-index: -1;
+}
+
+main {
+  position: relative;
+  overflow: hidden; 
 }
