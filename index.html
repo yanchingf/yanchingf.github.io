@@ -1,71 +1,238 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Sophie Fong</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500&display=swap" rel="stylesheet">
-    <style>
-      :root {
-        --bg: rgb(253, 249, 247);
-        --text: rgb(40, 37, 34);
-      }
-      [data-theme="dark"] {
-        --bg: rgb(40, 37, 34);
-        --text: rgb(233, 230, 229);
-      }
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>yanchingf</title>
+  <link rel="icon" type="image/x-icon" href="images/zorua-hisuian.png">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: rgb(253, 249, 247);
+      --text: rgb(40, 37, 34);
+    }
+
+    [data-theme="dark"] {
+      --bg: rgb(40, 37, 34);
+      --text: rgb(233, 230, 229);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      height: 100vh;
+      overflow: hidden;
+
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Cabinet Grotesk", sans-serif;
+
+      transition: background-color .2s ease, color .2s ease;
+    }
+
+    nav {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      z-index: 10;
+    }
+
+    nav a,
+    nav button {
+      background: none;
+      border: none;
+      padding: 0;
+
+      color: var(--text);
+      cursor: pointer;
+
+      transition: opacity .2s;
+    }
+
+    nav a:hover,
+    nav button:hover {
+      opacity: .6;
+    }
+
+    nav svg {
+      width: 28px;
+      height: 28px;
+      stroke-width: 1.5;
+    }
+
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+
+      height: calc(100vh - 4rem);
+    }
+
+
+    .image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image img,
+    .placeholder {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+
+    .content {
+      align-self: end;
+      padding-bottom: 2rem;
+    }
+
+    h1 {
+      margin: 0;
+
+      font-size: 3.5rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    p {
+      margin-top: .75rem;
+
+      font-size: 1.4rem;
+    }
+
+
+    @media (max-width: 900px) {
       body {
-        padding: 20px;
-        line-height: 1.5;
-        transition: background-color 0.2s, color 0.2s;
-        font-size: 30px;
-        font-family: 'Cabinet Grotesk', sans-serif;
-        background-color: var(--bg);
-        max-width: 680px;
-        color: var(--text);
-        margin: 0 auto;
+        overflow: auto;
       }
-      nav {
-        display: flex;
-        gap: 1.5rem;
-        justify-content: flex-end;
-        margin-bottom: 2rem;
+
+      main {
+        grid-template-columns: 1fr;
+        height: auto;
       }
-      nav a, nav button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: var(--text);
-        padding: 0;
+
+      .image {
+        height: 50vh;
       }
-      nav a:hover, nav button:hover { opacity: 0.6;}
-    </style>
-  </head>
-  <body>
-    <nav>
-      <button id="theme-toggle" title="toggle theme">
-        <i data-lucide="sun"></i>
-      </button>
-      <a href="https://github.com/yanchingf/" title="github">
-        <i data-lucide="git-fork"></i>
-      </a>
-    </nav>
 
-    <h1>🛋️ Sophie's Blog</h1>
-    <p>compe + physics @ northwestern</p>
+      .content {
+        margin-top: 2rem;
+      }
+    }
 
-    <script>
-      lucide.createIcons();
-      const body = document.body;
-      if (localStorage.getItem('theme') === 'dark') body.dataset.theme = 'dark';
+  </style>
+</head>
 
-      document.getElementById('theme-toggle').addEventListener('click', () => {
-        const isDark = body.dataset.theme === 'dark';
-        body.dataset.theme = isDark ? 'light' : 'dark';
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
-        document.getElementById('theme-toggle').innerHTML = `<i data-lucide="${isDark ? 'sun' : 'moon'}"></i>`;
-        lucide.createIcons();
-      });
-    </script>
-  </body>
+
+<body>
+
+  <nav>
+    <button id="theme-toggle" title="Toggle theme">
+      <i data-lucide="moon"></i>
+    </button>
+
+    <a href="https://github.com/yanchingf/" target="_blank" title="Github">
+      <i data-lucide="git-branch"></i>
+    </a>
+  </nav>
+
+
+  <main>
+
+    <div class="image">
+      <img src="images/image.png"> 
+
+      <div class="placeholder"></div>
+    </div>
+
+
+    <div class="content">
+      <h1>sophie fong</h1>
+      <p>computer eng @ northwestern</p>
+      <pre class="ascii" style="font-size:130%;"> 
+⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢱⠐⠄⠙⠽⡲⣤⡀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⡾⠃⠀⠀⢀⠈⠻⣿⣿⣶⡶⢃⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⡼⣧⣀⣠⡴⠀⢂⠀⠙⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢸⣅⣩⠟⠁⢰⠀⠸⡄⠀⠐⢻⣿⣿⡿⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠈⠙⠁⠀⠀⢀⠀⠀⡇⠀⠀⠄⠻⠿⢷⣋⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣸⠀⢠⠇⢀⡜⠀⠀⠐⡄⠀⠀⠈⠈⠐⢤⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢠⡏⠀⢈⡴⠋⠀⠀⠀⠀⡗⠀⠀⠀⠀⠀⠀⢻⣿⣶⣦⣄⠀
+⠀⠀⠀⠀⠀⡾⠀⡄⡎⠀⠀⠀⠀⠀⡰⠃⠀⠀⠀⠀⡠⠀⢀⡇⠙⣿⣿⡷
+⠀⠀⠀⠀⡠⠣⠀⠇⡄⠀⠀⠀⢠⠔⠁⠀⠀⠀⣠⠞⠀⢀⡜⣠⣾⢿⠟⠀
+⠀⠀⢀⡴⠁⣀⠤⠊⠘⡆⠀⣠⠣⢤⠤⠴⢲⠋⠙⠀⣰⠋⠘⡝⠁⠘⠄⠀
+⠀⣰⡿⠖⠉⠀⠀⢀⠊⡀⠚⠁⠀⠈⠀⡰⠁⠀⡆⡜⠁⠀⠀⠁⠀⠀⠀⠀
+⢀⡿⠁⠀⠀⠀⢰⣿⠏⠀⠀⠀⠀⡀⢰⠁⢀⣼⡞⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣾⡇⠀⠀⠀⠀⠀⢻⣧⣶⡄⠀⠀⣇⠎⣠⡾⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣿⣷⠀⠀⠀⠀⠀⠀⠉⠉⠁⠀⣼⢏⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣾⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⠏⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+      </pre>
+    </div>
+
+  </main>
+
+
+<script>
+  const body = document.body;
+  const toggle = document.getElementById("theme-toggle");
+
+
+  function updateThemeIcon() {
+    toggle.innerHTML = `
+      <i data-lucide="${
+        body.dataset.theme === "dark" ? "sun" : "moon"
+      }"></i>
+    `;
+
+    lucide.createIcons();
+  }
+
+
+  if (localStorage.getItem("theme") === "dark") {
+    body.dataset.theme = "dark";
+  }
+
+
+  updateThemeIcon();
+
+
+  toggle.addEventListener("click", () => {
+
+    if (body.dataset.theme === "dark") {
+      delete body.dataset.theme;
+      localStorage.setItem("theme", "light");
+    } 
+    
+    else {
+      body.dataset.theme = "dark";
+      localStorage.setItem("theme", "dark");
+    }
+
+    updateThemeIcon();
+
+  });
+
+  lucide.createIcons();
+</script>
+
+</body>
 </html>
